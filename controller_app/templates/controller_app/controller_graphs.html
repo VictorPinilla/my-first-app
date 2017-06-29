@@ -1,0 +1,15 @@
+
+<html>
+  {% load static %}
+  <img STYLE="position:absolute; TOP:20px; LEFT:250px; WIDTH:700px; HEIGHT:300px" src="{% static "controller_app/a0.png" %}" alt="My image"/>
+  <img STYLE="position:absolute; TOP:320px; LEFT:250px; WIDTH:700px; HEIGHT:300px" src="{% static "controller_app/a1.png" %}" alt="My image"/>
+  <img STYLE="position:absolute; TOP:620px; LEFT:250px; WIDTH:700px; HEIGHT:300px" src="{% static "controller_app/a2.png" %}" alt="My image"/>
+  <img STYLE="position:absolute; TOP:920px; LEFT:250px; WIDTH:700px; HEIGHT:300px" src="{% static "controller_app/a3.png" %}" alt="My image"/>
+  <img STYLE="position:absolute; TOP:1220px; LEFT:250px; WIDTH:700px; HEIGHT:300px" src="{% static "controller_app/a4.png" %}" alt="My image"/>
+
+
+<form action="" method="post" >
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button STYLE="position:absolute; TOP:100px; LEFT:100px; WIDTH:200px; HEIGHT:50px"   type="submit" class="save btn btn-default" name="title" value="{{id}}">Volver</button>
+</form>

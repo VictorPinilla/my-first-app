@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models
+
+# Create your models here.
+
+class Controllers2(models.Model):
+        usuarios = models.CharField(max_length=200)
+        controller = models.CharField(max_length=200)
+        serial_number = models.CharField(max_length=6)
+        numero_sectores=models.CharField(max_length=6)
+        web_direction = models.TextField()
+        read_control_calendario = models.TextField()
+        read_status = models.TextField()
+        status_put = models.TextField()
+        control_calendario_put = models.TextField()
+        read_analog_reading = models.TextField()
+        controller_coordinates = models.TextField()
+        lat_lng = models.TextField() 
+        analog_laws= models.TextField()  
+
+class Usuarios(models.Model):
+      usuarios_correo = models.CharField(max_length=200) 
+      password = models.CharField(max_length=200)

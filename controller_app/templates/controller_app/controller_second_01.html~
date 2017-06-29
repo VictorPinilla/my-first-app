@@ -1,0 +1,103 @@
+
+<html>
+
+  <head>
+
+     <!-- define on/off styles -->
+     <style type="text/css">
+      .on  { background:green; }
+      .off { background:red; }
+     </style>
+
+     <!-- define the toggle function -->
+     <script language="javascript">
+        function toggleState(item){
+           if(item.className == "on") {
+              item.className="off";
+           } else {
+              item.className="on";
+           }
+        }
+     </script>
+  </head>
+  
+
+
+
+  {% load static %}
+  <img STYLE="position:absolute; TOP:20px; LEFT:230px; WIDTH:820px; HEIGHT:190px" src="{% static "controller_app/fondo_02.png" %}" alt="My image"/>
+  <body>
+  {% block content %}
+  {% endblock content %}
+  {% block content2 %}
+  {% endblock content2 %}
+  {% block content3 %}
+  {% endblock content3 %}
+  </body>
+
+
+  {% for ii, jj, kk, ll, mm, nn in data %}
+  
+  {% load static %}
+  <img STYLE="position:absolute; {{kk}}" src="{% static "controller_app/R_ON_v2.png" %}" alt="My image"/>
+    {% if  ii == "off" %}
+    {% load static %}
+    <img STYLE="position:absolute; {{kk}} " src="{% static "controller_app/R_OFF_v2.png" %}" alt="My image"/>
+    {% endif %}
+  {% endfor %}
+
+  {% for ii, jj, kk, ll, mm, nn in data %}
+     <form role="form" action="" method="post">
+     {% csrf_token %}
+     {{ form.as_p }}
+    <button STYLE="position:absolute; {{ll}} WIDTH:180px; HEIGHT:80px; font-size : 20px;"  type="submit" class={{ii}} onclick="toggleState(this)" name="controller_button" value={{id}}:{{jj}} >{{mm}}</button>
+    </form>
+  {% endfor %}
+
+{% if  conexion == "1" %}
+<p STYLE="position:absolute; TOP:600px; LEFT:1100px; WIDTH:200px; HEIGHT:50px; font-size : 20px;">Conexion OK</p>
+{% endif %}
+{% if  conexion == "0" %}
+<p STYLE="position:absolute; TOP:600px; LEFT:1100px; WIDTH:200px; HEIGHT:50px; font-size : 20px;">No Conexion</p>
+{% endif %}
+
+<form role="form" action="" method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<button STYLE="position:absolute; TOP:600px; LEFT:600px; WIDTH:280px; HEIGHT:100px; font-size : 20px;"  type="submit" class={{VP}} onclick="toggleState(this)" name="controller_button" value="{{id}}:MA" >Modo Automatico</button>
+</form>
+  
+<a href="https://www.accuweather.com/en/us/new-york-ny/10007/weather-forecast/349727" class="aw-widget-legal">
+<!--
+By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at https://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at https://www.accuweather.com/en/privacy.
+-->
+a href="https://www.accuweather.com/es/es/cascante/306005/weather-forecast/306005" class="aw-widget-legal">
+<!--
+By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at https://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at https://www.accuweather.com/en/privacy.
+-->
+</a><div id="awcc1496781167370"  STYLE="position:absolute; TOP:250px; LEFT:10px; WIDTH:300px; HEIGHT:450px;" class="aw-widget-current"  data-locationkey="306005" data-unit="c" data-language="es" data-useip="false" data-uid="awcc1496781167370"></div><script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
+
+<script language="javascript" type="text/javascript">
+<!--
+function popitup(url) {
+    newwindow=window.open(url,'{{title}}','height=500,width=700');
+    if (window.focus) {newwindow.focus()}
+    return false;
+}
+
+// -->
+</script>
+
+
+<form action="" method="post">
+     {% csrf_token %}
+     {{ form.as_p }}
+<button STYLE="position:absolute; TOP:550px; LEFT:100px; WIDTH:200px; HEIGHT:200px;"  type="submit"  name="popup" value="{{id}}:popup" >calendario</button>
+</form>
+<form action="" method="post">
+     {% csrf_token %}
+     {{ form.as_p }}
+<button STYLE="position:absolute; TOP:550px; LEFT:350px; WIDTH:200px; HEIGHT:200px;"  type="submit"   name="graphics" value="{{id}}:graphics" >graficas</button>
+</form>
+</html>
+

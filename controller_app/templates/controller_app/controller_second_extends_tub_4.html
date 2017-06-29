@@ -1,0 +1,48 @@
+{% extends 'blog/post_list_second_01.html' %}
+
+
+ 
+
+{% block content %}
+  {% load static %}
+  <img STYLE="position:absolute; TOP:50px; LEFT:470px; WIDTH:950px; HEIGHT:600px" src="{% static "blog/tuberia_4.png" %}" alt="My image"/>
+{% endblock content %}
+
+
+{% block content2 %}
+{% if  popup == "popup" %}
+  <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery UI Dialog - Default functionality</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$( function() {
+$( "#dialog" ).dialog({
+        width: 600,
+        height: 500,
+});  
+} );
+</script>
+</head>
+<body >
+<div id="dialog" title="Calendario Riego">
+
+
+<form action="" method="POST" >{% csrf_token %}
+   <input type="text" name="date"><br /><br />
+   <input type="text" name="date2"><br /><br />
+   <input type="checkbox" name="display_type"> 
+   <button type="submit" class="save btn btn-default">Save</button>
+</form>
+
+
+</div>
+
+</body>
+{% endif %}
+{% endblock content2 %}
+

@@ -1,0 +1,116 @@
+{% extends 'controller_app/controller_second_01.html' %}
+
+
+ 
+
+{% block content %}
+  {% load static %}
+  <img STYLE="position:absolute; TOP:50px; LEFT:470px; WIDTH:950px; HEIGHT:600px" src="{% static "controller_app/tuberia_5.png" %}" alt="My image"/>
+{% endblock content %}
+
+
+{% block content2 %}
+{% if  popup == "popup" %}
+  <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery UI Dialog - Default functionality</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$( function() {
+$( "#dialog" ).dialog({
+        width: 800,
+        height: 400,
+});  
+} );
+</script>
+</head>
+<body >
+<div id="dialog" title="Calendario Riego">
+
+
+<form action="" method="post" >{% csrf_token %}
+   {{ form.as_p }}
+   {% for ii, jj, kk, ll, mm, nn, oo in position_input_popup %}
+   <p  STYLE="position:absolute; {{kk}}  ">
+   {{ll}}  
+   </p> 
+   <input type="time"  datetime="16:10" STYLE="position:absolute; {{ii}} WIDTH:70px; HEIGHT:20px;" placeholder="HH:MM" name="date_ini:{{mm}}" value={{nn}}>
+   <input type="time"  datetime="16:10" STYLE="position:absolute; {{jj}} WIDTH:70px; HEIGHT:20px;" placeholder="HH:MM" name="date_fin:{{mm}}" value={{oo}}>
+   {% endfor %}
+   {% for ii, jj, kk in checkbox %}
+    
+   {% if  ii == "0" %}
+   {% csrf_token %}
+   {{ form.as_p }}
+   <input type="checkbox" name="checkbox{{kk}}" STYLE="position:absolute; {{jj}}" checked> 
+   {% endif %}
+   {% if  ii == "1" %}
+   {% csrf_token %}
+   {{ form.as_p }}
+   <input type="checkbox" name="checkbox{{kk}}" STYLE="position:absolute; {{jj}}"> 
+   {% endif %}
+   {% endfor %}
+   <p  STYLE="position:absolute; TOP:65px; LEFT:15px;  ">
+   Hora Inicio  
+   </p> 
+   <p  STYLE="position:absolute; TOP:115px; LEFT:15px;  ">
+   Tiempo Riego
+   </p>
+   <p  STYLE="position:absolute; TOP:210px; LEFT:65px;  ">L</p>
+   <p  STYLE="position:absolute; TOP:210px; LEFT:105px;  ">M</p>
+   <p  STYLE="position:absolute; TOP:210px; LEFT:145px;  ">X</p>
+   <p  STYLE="position:absolute; TOP:210px; LEFT:185px;  ">J</p>
+   <p  STYLE="position:absolute; TOP:210px; LEFT:225px;  ">V</p>
+   <p  STYLE="position:absolute; TOP:210px; LEFT:265px;  ">S</p>
+   <p  STYLE="position:absolute; TOP:210px; LEFT:305px;  ">D</p>
+   {% csrf_token %}
+   {{ form.as_p }}
+   <button STYLE="position:absolute; TOP:200px; LEFT:400px; WIDTH:200px; HEIGHT:50px" type="submit" class="save btn btn-default" name="cargar_datos" value="{{id}}">Cargar calendario</button>
+   <input type="checkbox" name="checkbox"  checked> 
+   <input type="checkbox" name="checkbox" STYLE="position:absolute;  TOP:250px; LEFT:400px;" checked> 
+</form>
+
+
+</div>
+
+</body>
+{% endif %}
+{% endblock content2 %}
+
+
+{% block content3 %}
+{% if  popup == "popup_ok" %}
+  <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery UI Dialog - Default functionality</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$( function() {
+$( "#dialog" ).dialog({
+        width: 400,
+        height: 200,
+});  
+} );
+</script>
+</head>
+<body >
+<div id="dialog" title="Calendario Riego">
+
+<p >Calendario Subido a Controlador</p>
+
+
+</div>
+
+</body>
+{% endif %}
+{% endblock content3 %}
+
+
