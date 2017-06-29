@@ -5,11 +5,12 @@ from django.template import Template, Context
 from django.shortcuts import render, render_to_response
 from django.views.generic import TemplateView
 from django.http import HttpResponse
-import requests
+
 from controller_app.models import Controllers, Usuarios
 import numpy
 import matplotlib.pyplot as plt
 import datetime
+import requests
 
 # Create your views here.
 
